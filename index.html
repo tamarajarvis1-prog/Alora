@@ -28,13 +28,9 @@
     position: relative;
     animation: fadeIn 2s ease-in-out;
   }
+  /* Remove overlay */
   header::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.25); /* slightly darker overlay */
-    z-index: 1;
+    display: none;
   }
   header h1 {
     font-size: 3rem;
@@ -52,7 +48,7 @@
     display: inline-block;
     margin-top: 1.5rem;
     padding: 0.9rem 2rem;
-    background: #C19A6B; /* sand color button */
+    background: #FF1493; /* vibrant pink button */
     color: white;
     border-radius: 30px;
     font-size: 1.1rem;
@@ -63,7 +59,7 @@
   }
   .cta-btn:hover {
     transform: scale(1.05);
-    background: #A8865D;
+    background: #e01482;
   }
 
   /* Main */
@@ -72,7 +68,7 @@
     max-width: 1000px;
     margin: auto;
   }
-  h2 { text-align: center; color: #C19A6B; margin-top: 2rem; }
+  h2 { text-align: center; color: #FF1493; margin-top: 2rem; }
 
   /* Features cards */
   .features {
@@ -95,7 +91,7 @@
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   }
-  .card h3 { color: #C19A6B; margin-bottom: 0.7rem; }
+  .card h3 { color: #FF1493; margin-bottom: 0.7rem; }
   .card p { color: #555; font-size: 1rem; }
 
   /* QR & download counter */
@@ -180,7 +176,7 @@
       <p>Scan to download ALORA instantly</p>
     </div>
     <div>
-      <h2 style="color:#C19A6B;">Downloads</h2>
+      <h2 style="color:#FF1493;">Downloads</h2>
       <p style="font-size:2rem; font-weight:bold;">1,235+</p>
     </div>
   </section>
