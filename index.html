@@ -1,160 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ALORA - Wellness & Community</title>
-  <style>
-    /* Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALORA – Wellness & Emotional Community</title>
+<style>
+  /* Base styles */
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #FFF8F5;
+    color: #333;
+    overflow-x: hidden;
+  }
+  a { text-decoration: none; }
 
-    body {
-      background: #fffaf4;
-      color: #333;
-      line-height: 1.6;
-    }
+  /* Header */
+  header {
+    background: url('https://images.pexels.com/photos/48674/pexels-photo-48674.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;
+    height: 60vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    position: relative;
+    animation: fadeIn 2s ease-in-out;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.3);
+  }
+  header h1 {
+    font-size: 3rem;
+    z-index: 1;
+    margin: 0;
+  }
+  header p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    z-index: 1;
+  }
+  .cta-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.9rem 2rem;
+    background: #FF6B81;
+    color: white;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+  }
+  .cta-btn:hover {
+    transform: scale(1.05);
+  }
 
-    header {
-      background: #ffdee2;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
+  /* Main */
+  main {
+    padding: 2rem 1rem;
+    max-width: 1000px;
+    margin: auto;
+  }
+  h2 { text-align: center; color: #FF6B81; margin-top: 2rem; }
 
-    header h1 {
-      font-size: 2.5rem;
-      color: #ff6b81;
-      margin-bottom: 0.5rem;
-    }
+  /* Features cards */
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  .card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: calc(45% - 1rem);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  .card h3 { color: #FF6B81; margin-bottom: 0.7rem; }
+  .card p { color: #555; font-size: 1rem; }
 
-    header p {
-      font-size: 1.2rem;
-      color: #666;
-    }
+  /* QR & download counter */
+  .download-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem 0;
+    text-align: center;
+  }
+  .download-section img { width: 200px; border-radius: 15px; }
 
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+  /* Testimonials */
+  .testimonials {
+    margin: 3rem 0;
+  }
+  .testimonial {
+    background: #fff0f3;
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-style: italic;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
 
-    section {
-      margin-bottom: 3rem;
-      text-align: center;
-    }
+  /* Footer */
+  footer {
+    background: #FFEFF0;
+    padding: 2rem;
+    text-align: center;
+    color: #444;
+    font-size: 0.9rem;
+  }
 
-    section h2 {
-      font-size: 2rem;
-      color: #ff6b81;
-      margin-bottom: 1rem;
-    }
+  /* Floating Download Button */
+  .floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #FF6B81;
+    color: #fff;
+    padding: 0.9rem 1.8rem;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 1000;
+    text-align: center;
+    animation: pulse 2s infinite;
+  }
+  .floating-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  }
 
-    section p {
-      font-size: 1.1rem;
-      color: #444;
-    }
-
-    .cta-button {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.8rem 2rem;
-      background: #ff6b81;
-      color: #fff;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
-    .cta-button:hover {
-      background: #ff4b61;
-    }
-
-    footer {
-      background: #ffe6e9;
-      padding: 2rem 1rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    /* Cute cards for features */
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .feature-card {
-      background: #fff0f3;
-      border-radius: 20px;
-      padding: 1.5rem;
-      flex: 1 1 250px;
-      max-width: 250px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .feature-card h3 {
-      color: #ff6b81;
-      margin-bottom: 0.5rem;
-    }
-
-    .feature-card p {
-      color: #555;
-      font-size: 0.95rem;
-    }
-  </style>
+  /* Animations */
+  @keyframes fadeIn { from {opacity:0} to {opacity:1} }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 10px rgba(255,107,129,0.6); transform: scale(1);}
+    50% { box-shadow: 0 0 20px rgba(255,107,129,0.9); transform: scale(1.05);}
+    100% { box-shadow: 0 0 10px rgba(255,107,129,0.6); transform: scale(1);}
+  }
+</style>
 </head>
 <body>
 
 <header>
-  <h1>ALORA</h1>
-  <p>Wellness, creativity, and community — for women, by women.</p>
+  <h1>Welcome to ALORA</h1>
+  <p>A women‑only wellness & emotional community</p>
+  <a href="https://apps.apple.com/bb/app/alora/id6752672946" class="cta-btn" target="_blank">Download ALORA</a>
 </header>
 
 <main>
+  <!-- Intro -->
   <section>
-    <h2>Connect with your mood</h2>
-    <p>Share how you feel in our Mood Circle, explore wellness content, and track your personal growth with ease.</p>
-    <a href="https://apps.apple.com/us/app/alora/id6752672946" class="cta-button">Join ALORA</a>
+    <h2>Your Journey Begins Here</h2>
+    <p style="text-align:center; font-size:1.1rem; color:#555;">
+      ALORA helps you express your mood, connect with others, and grow through reflection and emotional support — all in a safe space designed just for women.
+    </p>
   </section>
 
-  <section>
-    <h2>Features</h2>
-    <div class="features">
-      <div class="feature-card">
-        <h3>Mood Tracker</h3>
-        <p>Log your moods, track trends, and discover patterns in your emotions.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Mood Garden</h3>
-        <p>Explore reflections and goals from other women and find inspiration daily.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Visions</h3>
-        <p>Share your creative videos and showcase your wellness journey like a pro.</p>
-      </div>
-      <div class="feature-card">
-        <h3>ALORA Essentials</h3>
-        <p>Buy and sell wellness products, all targeted to a female-focused audience.</p>
-      </div>
+  <!-- Features -->
+  <section class="features">
+    <div class="card">
+      <h3>Mood Circles</h3>
+      <p>Join circles with other women feeling the same way as you — share, support, and grow together.</p>
+    </div>
+    <div class="card">
+      <h3>Daily Mood Tracker</h3>
+      <p>Track how you feel over time and see your emotional patterns evolve.</p>
+    </div>
+    <div class="card">
+      <h3>Visions</h3>
+      <p>Express yourself creatively with short videos and connect visually.</p>
+    </div>
+    <div class="card">
+      <h3>Mood Capsules</h3>
+      <p>Share short‑lived posts tied to your current mood — they disappear after 24 hours.</p>
     </div>
   </section>
 
-  <section>
-    <h2>Mood Capsules</h2>
-    <p>Capture your current mood in a capsule — it expires in 24 hours, keeping your journey fresh and meaningful.</p>
+  <!-- QR & Download Counter -->
+  <section class="download-section">
+    <div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://apps.apple.com/bb/app/alora/id6752672946" alt="ALORA QR Code">
+      <p>Scan to download ALORA instantly</p>
+    </div>
+    <div>
+      <h2 style="color:#FF6B81;">Downloads</h2>
+      <p style="font-size:2rem; font-weight:bold;">1,235+</p>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>What Women Are Saying</h2>
+    <div class="testimonial">
+      "ALORA has helped me understand my emotions better. I finally feel connected in a safe space!"
+    </div>
+    <div class="testimonial">
+      "I love the Mood Circles! It’s so comforting to see others feeling the same way I do."
+    </div>
+    <div class="testimonial">
+      "Visions is my creative outlet — it’s like Instagram but supportive and focused on wellness."
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="text-align:center; margin-top: 2rem;">
+    <a href="https://apps.apple.com/bb/app/alora/id6752672946" class="cta-btn" target="_blank">Get ALORA on the App Store</a>
   </section>
 </main>
 
+<!-- Floating Download Button -->
+<a href="https://apps.apple.com/bb/app/alora/id6752672946" class="floating-btn" target="_blank">Download ALORA</a>
+
 <footer>
-  <p>© 2025 ALORA. 15% of proceeds go to charity. Made with ❤️ for women everywhere.</p>
+  © 2025 ALORA. A safe space to be real — feel seen, heard, and connected.
 </footer>
 
 </body>
